@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,24 +11,18 @@
 </head>
 <body class="min-h-screen p-6 bg-gradient-to-br from-[#6A9C89] to-[#C4DAD2] font-sans flex items-center justify-center">
 
-  <form id="userForm" class="bg-white/60 rounded-2xl shadow-lg p-10 backdrop-blur-md w-full max-w-md space-y-5 min-h-[550px] flex flex-col justify-between">
+  <form id="userForm" class="bg-white/60 rounded-xl shadow-md p-4 backdrop-blur-md min-h-[200px] p-10 rounded-2xl shadow-lg w-full max-w-md space-y-5 min-h-[550px] flex flex-col justify-between">
     
     <!-- Top Section with Logo and Headings -->
     <div class="space-y-3">
-      <!-- LOGO with matching background -->
+      <!-- LOGO -->
       <div class="flex justify-center">
-        <div class="bg-white/60 backdrop-blur-md px-4 py-2 rounded-md shadow-sm inline-block">
-        <img src="logo1.png" alt="TaskFlow Logo" class="h-14" />
-        </div>
+        <img src="Logo.png" alt="TaskFlow Logo" class="h-14" />
       </div>
 
       <!-- Title + Subheading -->
-      <!-- <h5 class="text-center text-sm font-semibold text-[#264653]">Your Personal Productivity Companion</h5>
-      <p class="text-center text-sm">🔒 Age verification required for access</p> -->
-        <div class="text-center leading-tight space-y-1">
-          <h5 class="text-sm font-semibold text-[#264653]">Your Personal Productivity Companion</h5>
-          <p class="text-sm text-gray-600">🔒 Age verification required for access</p>
-        </div>
+      <h2 class="text-center text-xl font-semibold text-[#264653]">Your Personal Productivity Companion</h2>
+      <p class="text-center text-gray-600">🔒 Age verification required for access</p>
     </div>
 
     <!-- Form Fields -->
