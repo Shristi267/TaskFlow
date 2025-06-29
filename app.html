@@ -9,72 +9,103 @@
 </head>
 <body class="min-h-screen p-6 bg-gradient-to-br from-[#6A9C89] to-[#C4DAD2] font-sans">
 
-  <!-- Toast Message -->
-  <div id="toast" class="fixed bottom-4 right-4 bg-[#2A9D8F] text-white px-4 py-2 rounded shadow hidden z-50 transition-all duration-300"></div>
+  <!-- Toast -->
+  <div id="toast"
+       class="fixed bottom-4 right-4 bg-[#2A9D8F] text-white px-4 py-2 rounded shadow hidden z-50 transition-all"></div>
 
-
-  <!-- Header -->
+  <!-- ===== HEADER ===== -->
   <header class="flex items-center justify-between mb-6">
+
+    <!-- Left cluster: logo + user -->
     <div class="flex items-center gap-4">
+      <!-- Your logo (add /images/logo.png or change the path) -->
+      <img src="logo1.png" alt="Logo"
+           class="w-12 h-12 rounded-md bg-white shadow object-contain" />
+
+      <!-- Avatar that JS still updates -->
       <img id="avatar" class="w-12 h-12 rounded-full border bg-white" />
+
+      <!-- Name + tagline (IDs kept so JS works) -->
       <div>
-        <h2 class="font-bold text-lg text-[#212121]" id="username">Good Morning</h2>
+        <h2 id="username" class="font-bold text-lg text-[#212121]">Good Morning</h2>
         <small class="text-[#212121]">Your Productivity Companion</small>
       </div>
     </div>
-    <button onclick="logout()" class="bg-[#16423C] hover:bg-[#077A7D] text-white px-4 py-2 rounded">Sign Out</button>
+
+    <!-- Sign‑out button -->
+    <button onclick="logout()"
+            class="bg-[#16423C] hover:bg-[#077A7D] text-white px-4 py-2 rounded">
+      Sign Out
+    </button>
   </header>
 
-  <!-- Salutation -->
-  <h1 id="salutation" class="text-xl mt-2 mb-6 text-[#BBD8A3] font-semibold"></h1>
+  <!-- Salutation the JS fills -->
+  <h1 id="salutation"
+      class="text-xl mt-2 mb-6 text-[#BBD8A3] font-semibold"></h1>
 
-  <!-- Task Input & Tools -->
+  <!-- ============= MAIN UI REMAINS UNCHANGED ============= -->
+
+  <!-- Task input row -->
   <form id="taskForm" class="flex flex-wrap gap-2 mb-6">
-    <input
-      id="taskInput"
-      type="text"
-      placeholder="Add a new task..."
-      class="flex-1 bg-[#FFF2E0] text-black placeholder-gray-500 border border-gray-300 px-3 py-2 rounded"
-      required
-    />
+    <input id="taskInput" type="text" placeholder="Add a new task..."
+           class="flex-1 bg-[#FFF2E0] text-black placeholder-gray-500 border border-gray-300 px-3 py-2 rounded"
+           required />
 
-    <select
-      id="prioritySelect"
-      class="bg-[#FFF2E0] text-black border border-gray-300 px-2 py-2 rounded"
-    >
+    <select id="prioritySelect"
+            class="bg-[#FFF2E0] text-black border border-gray-300 px-2 py-2 rounded">
       <option value="medium" selected>Medium</option>
       <option value="high">High</option>
       <option value="low">Low</option>
     </select>
 
-    <button type="submit" class="bg-[#077A7D] hover:bg-[#6A9C89] text-white px-4 py-2 rounded">➕ Add Task</button>
+    <button type="submit"
+            class="bg-[#077A7D] hover:bg-[#6A9C89] text-white px-4 py-2 rounded">
+      ➕ Add Task
+    </button>
 
     <input type="file" id="importFile" accept="application/json" class="hidden" />
-    <button type="button" onclick="document.getElementById('importFile').click()" class="bg-[#077A7D] text-white px-4 py-2 rounded hover:bg-[#6A9C89]">📂 Import</button>
-    <button type="button" onclick="exportTasks()" class="bg-[#077A7D] hover:bg-[#6A9C89] text-white px-4 py-2 rounded">📤 Export</button>
+    <button type="button"
+            onclick="document.getElementById('importFile').click()"
+            class="bg-[#077A7D] text-white px-4 py-2 rounded hover:bg-[#6A9C89]">
+      📂 Import
+    </button>
+    <button type="button" onclick="exportTasks()"
+            class="bg-[#077A7D] hover:bg-[#6A9C89] text-white px-4 py-2 rounded">
+      📤 Export
+    </button>
   </form>
 
-  <!-- Search Bar -->
-  <input id="searchInput" type="text" placeholder="Search tasks..." class="bg-[#FFF2E0] border px-3 py-2 rounded w-full mb-6" />
+  <!-- Search -->
+  <input id="searchInput" type="text" placeholder="Search tasks…"
+         class="bg-[#FFF2E0] border px-3 py-2 rounded w-full mb-6" />
 
-  <!-- Task Stage Boxes -->
+  <!-- Stage boxes -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-    <!-- Todo Box -->
-    <div class="bg-white/60 rounded-xl shadow-md p-3 backdrop-blur-md min-h-[200px]" ondrop="onDrop(event, 'todo')" ondragover="onDragOver(event)">
-      <h3 class="text-lg font-semibold text-[#077A7D] mb-3">📝 Todo (<span id="todo-count">0</span>)</h3>
+    <!-- Todo -->
+    <div class="bg-white/60 rounded-xl shadow-md p-3 backdrop-blur-md min-h-[200px]"
+         ondrop="onDrop(event,'todo')" ondragover="onDragOver(event)">
+      <h3 class="text-lg font-semibold text-[#077A7D] mb-3">
+        📝 Todo (<span id="todo-count">0</span>)
+      </h3>
       <ul id="todo-list" class="space-y-3"></ul>
     </div>
 
-    <!-- Completed Box -->
-    <div class="bg-white/60 rounded-xl shadow-md p-4 backdrop-blur-md min-h-[200px]" ondrop="onDrop(event, 'completed')" ondragover="onDragOver(event)">
-      <h3 class="text-lg font-semibold text-[#077A7D] mb-3">✅ Completed (<span id="completed-count">0</span>)</h3>
+    <!-- Completed -->
+    <div class="bg-white/60 rounded-xl shadow-md p-4 backdrop-blur-md min-h-[200px]"
+         ondrop="onDrop(event,'completed')" ondragover="onDragOver(event)">
+      <h3 class="text-lg font-semibold text-[#077A7D] mb-3">
+        ✅ Completed (<span id="completed-count">0</span>)
+      </h3>
       <ul id="completed-list" class="space-y-3"></ul>
     </div>
 
-    <!-- Archived Box -->
-    <div class="bg-white/60 rounded-xl shadow-md p-4 backdrop-blur-md min-h-[200px]" ondrop="onDrop(event, 'archived')" ondragover="onDragOver(event)">
-      <h3 class="text-lg font-semibold text-[#077A7D] mb-3">📦 Archived (<span id="archived-count">0</span>)</h3>
+    <!-- Archived -->
+    <div class="bg-white/60 rounded-xl shadow-md p-4 backdrop-blur-md min-h-[200px]"
+         ondrop="onDrop(event,'archived')" ondragover="onDragOver(event)">
+      <h3 class="text-lg font-semibold text-[#077A7D] mb-3">
+        📦 Archived (<span id="archived-count">0</span>)
+      </h3>
       <ul id="archived-list" class="space-y-3"></ul>
     </div>
 
