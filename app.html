@@ -12,6 +12,7 @@
   <!-- Toast Message -->
   <div id="toast" class="fixed bottom-4 right-4 bg-[#2A9D8F] text-white px-4 py-2 rounded shadow hidden z-50 transition-all duration-300"></div>
 
+
   <!-- Header -->
   <header class="flex items-center justify-between mb-6">
     <div class="flex items-center gap-4">
@@ -25,7 +26,7 @@
   </header>
 
   <!-- Salutation -->
-  <h1 id="salutation" class="text-xl mt-2 mb-6 [#BBD8A3] font-semibold"></h1>
+  <h1 id="salutation" class="text-xl mt-2 mb-6 text-[#BBD8A3] font-semibold"></h1>
 
   <!-- Task Input & Tools -->
   <form id="taskForm" class="flex flex-wrap gap-2 mb-6">
@@ -60,7 +61,7 @@
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
     <!-- Todo Box -->
-    <div class="bg-white/60 rounded-xl shadow-md p-4 backdrop-blur-md min-h-[200px]" ondrop="onDrop(event, 'todo')" ondragover="onDragOver(event)">
+    <div class="bg-white/60 rounded-xl shadow-md p-3 backdrop-blur-md min-h-[200px]" ondrop="onDrop(event, 'todo')" ondragover="onDragOver(event)">
       <h3 class="text-lg font-semibold text-[#077A7D] mb-3">📝 Todo (<span id="todo-count">0</span>)</h3>
       <ul id="todo-list" class="space-y-3"></ul>
     </div>
