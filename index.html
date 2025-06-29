@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" href="assets/favicon.ico"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TaskFlow – Landing</title>
+  <script defer src="js/index.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen p-6 bg-gradient-to-br from-[#6A9C89] to-[#C4DAD2] font-sans flex items-center justify-center">
+
+  <form id="userForm" class="bg-white/60 rounded-xl shadow-md p-4 backdrop-blur-md min-h-[200px] p-10 rounded-2xl shadow-lg w-full max-w-md space-y-5 min-h-[550px] flex flex-col justify-between">
+    
+    <!-- Top Section with Logo and Headings -->
+    <div class="space-y-3">
+      <!-- LOGO -->
+      <div class="flex justify-center">
+        <img src="assets/logo.png" alt="TaskFlow Logo" class="h-14" />
+      </div>
+
+      <!-- Title + Subheading -->
+      <h2 class="text-center text-xl font-semibold text-[#264653]">Your Personal Productivity Companion</h2>
+      <p class="text-center text-gray-600">🔒 Age verification required for access</p>
+    </div>
+
+    <!-- Form Fields -->
+    <div class="space-y-5">
+      <h1 class="text-2xl font-bold text-center text-[#264653]">Welcome to TaskFlow</h1>
+      <input id="name" type="text" placeholder="Enter your name" class="w-full p-3 border border-gray-300 rounded" required/>
+      <input id="dob" type="date" class="w-full p-3 border border-gray-300 rounded" required/>
+      <button type="submit" class="w-full bg-[#16423C] hover:bg-[#21867A] text-white py-2 rounded">Continue</button>
+      <p id="error" class="text-red-600 text-sm hidden text-center"></p>
+    </div>
+
+    <!-- Bottom Disclaimer -->
+    <p class="text-xs text-gray-500 text-center">
+      By continuing, you confirm that you are over 10 years old and agree to our terms of service.
+    </p>
+
+    <div id="locale-placeholder" data-locale="guj" class="hidden"></div>
+  </form>
+
+</body>
+</html>
